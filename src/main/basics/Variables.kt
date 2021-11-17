@@ -14,4 +14,10 @@ object Variables {
     //CONST CONCEPT
     const val CONSTANT_VALUE = "Minha primeira constante"
 
+    //LAZY CONCEPT
+    val immutablePublicationLazyVariable by lazy (LazyThreadSafetyMode.PUBLICATION) {
+        val a = 1 + 1
+        "Minha primeira variável imutável lazy com resultado de a = $a"
+    }
+    val immutableSynchronizedLazyVariable by lazy (LazyThreadSafetyMode.SYNCHRONIZED) { "Minha primeira variável imutável lazy" }
 }
