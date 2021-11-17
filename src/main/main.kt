@@ -1,7 +1,4 @@
-import basics.BackingProperty
-import basics.Conditionals
-import basics.Loops
-import basics.Variables
+import basics.*
 
 fun main (args: Array<String>) {
     //VARIABLES CONCEPT
@@ -12,6 +9,18 @@ fun main (args: Array<String>) {
     println(Variables.internalImmutableVariable)
     println(Variables.mutableVariable)
     println(Variables.CONSTANT_VALUE)
+
+    //DATA TYPES
+    println(DataTypes.myNum)
+    println(DataTypes.myBoolean)
+    println(DataTypes.myText)
+    DataTypes.myPreAllocatedArray.forEach { println(it) }
+    DataTypes.myPreAllocatedArrayWithInitialValues.forEach { println(it) }
+    DataTypes.myPreAllocatedArrayWithLambdaFunction.forEach { println(it) }
+
+    //NULLABILITY
+
+
 
     //CONDITIONALS CONCEPT
     val remoDescription = Conditionals.useIfs("remo")
