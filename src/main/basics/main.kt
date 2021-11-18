@@ -1,4 +1,4 @@
-import basics.*
+package basics
 
 fun main (args: Array<String>) {
     //VARIABLES CONCEPT
@@ -19,8 +19,8 @@ fun main (args: Array<String>) {
     DataTypes.myPreAllocatedArrayWithLambdaFunction.forEach { println(it) }
 
     //NULLABILITY
-
-
+    Nullability.nullableStringCase()
+    Nullability.safeOperations()
 
     //CONDITIONALS CONCEPT
     val remoDescription = Conditionals.useIfs("remo")
