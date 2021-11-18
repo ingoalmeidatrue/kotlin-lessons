@@ -2,13 +2,13 @@ package classes
 
 class ManagerOperations: UserOperations() {
 
-    fun deleteByStatus(status: ProfessionalStatus): Int {
-        val filteredUsers = users.filter { user -> user.professionalStatus == status }
-        filteredUsers.forEach { user ->
-            users.remove(user)
-            println("Usuário ${user.name} removido por estar com flag - Open to Work - no LinkedIn ")
-        }
-        return filteredUsers.size
+    fun deleteByStatus(status: ProfessionalStatus) {
+        users
+            .filter { user -> user.professionalStatus == status }
+            .forEach { user ->
+                users.remove(user)
+                println("Usuário ${user.name} removido por estar com flag - Open to Work - no LinkedIn ")
+            }
     }
 
     fun getAll(): List<User> {

@@ -23,7 +23,7 @@ fun main (){
 
     //REQUIREMENT FAILED EMAIL SCENARIO
     try {
-        User(1, "Harold", "wrongMailHaroldgmail.com", professionalStatus = ProfessionalStatus.EMPLOYED)
+        User(5, "Harold", "wrongMailHaroldgmail.com", professionalStatus = ProfessionalStatus.EMPLOYED)
     }catch (e: Exception) {
         println(e)
     }
@@ -40,5 +40,4 @@ fun main (){
     }
 
     managerOperations.deleteByStatus(ProfessionalStatus.EMPLOYED_WITH_OPEN_TO_WORK_FLAG)
-
 }

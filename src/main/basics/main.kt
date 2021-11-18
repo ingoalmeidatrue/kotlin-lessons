@@ -8,15 +8,23 @@ fun main (args: Array<String>) {
     println(Variables.immutableOpenVariable)
     println(Variables.internalImmutableVariable)
     println(Variables.mutableVariable)
+    println(Variables.anyMutableVariable)
+    Variables.mutableVariable = "123123"
+    Variables.anyMutableVariable = 1
+    println(Variables.mutableVariable)
+    println(Variables.anyMutableVariable)
     println(Variables.CONSTANT_VALUE)
 
     //DATA TYPES
     println(DataTypes.myNum)
     println(DataTypes.myBoolean)
     println(DataTypes.myText)
-    DataTypes.myPreAllocatedArray.forEach { println(it) }
-    DataTypes.myPreAllocatedArrayWithInitialValues.forEach { println(it) }
-    DataTypes.myPreAllocatedArrayWithLambdaFunction.forEach { println(it) }
+    DataTypes.myList.forEach { println(it) }
+    DataTypes.myPreAllocatedArray.forEach { "${print(it)} " }
+    println()
+    DataTypes.myPreAllocatedArrayWithInitialValues.forEach { "${print(it)} " }
+    println()
+    DataTypes.myPreAllocatedArrayWithLambdaFunction.forEach { "${print(it)} " }
 
     //NULLABILITY
     Nullability.nullableStringCase()

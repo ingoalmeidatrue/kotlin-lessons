@@ -1,15 +1,17 @@
 package basics
 
+
 object Variables {
 
     //VAL CONCEPT
     val immutableVariable = "Minha primeira variável imutável"
     open val immutableOpenVariable = "Minha primeira variável aberta"
-    internal val internalImmutableVariable = "Minha primeira variável privada"
+    internal val internalImmutableVariable = "Minha primeira variável internal"
     private val privateImmutableVariable = "Minha primeira variável privada"
 
     //VAR CONCEPT
     var mutableVariable = "Minha primeira variável mutável"
+    var anyMutableVariable: Any? = "Minha primeira variável mutável com tipagem genérica"
 
     //CONST CONCEPT
     const val CONSTANT_VALUE = "Minha primeira constante"
@@ -23,5 +25,7 @@ object Variables {
     }
 
     //Locks are used to ensure that only a single thread can initialize the Lazy instance.
-    val immutableSynchronizedLazyVariable by lazy (LazyThreadSafetyMode.SYNCHRONIZED) { "Minha primeira variável imutável lazy" }
+    val immutableSynchronizedLazyVariable by lazy (LazyThreadSafetyMode.SYNCHRONIZED) {
+        "Minha primeira variável imutável lazy"
+    }
 }

@@ -14,9 +14,9 @@ object Nullability {
     }
 
     fun safeOperations(){
-        print(safeOperation?.length)
+        println(safeOperation?.length)
         safeOperation = "1"
-        print(safeOperation!!.length)
+        println(safeOperation!!.length)
     }
 
     private fun verifyLengthWithoutElvis(entry: String?): Int {

@@ -12,5 +12,4 @@ class BackingProperty {
     fun addElements(name: String){
         _elementList.add(name)
     }
-
 }

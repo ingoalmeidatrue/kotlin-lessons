@@ -1,5 +1,6 @@
 package basics
 
+
 object DataTypes {
 
     //NUMBERS
@@ -14,7 +15,7 @@ object DataTypes {
     val myText = "Hello"
 
     //LISTS
-    val myList: List<String> = listOf("teste")
+    val myList: List<String> = listOf("teste", "teste2")
     val myPreAllocatedArray = IntArray(5)
     val myPreAllocatedArrayWithInitialValues = IntArray(5) { 42 }
     var myPreAllocatedArrayWithLambdaFunction = IntArray(5) { it * 2 }
@@ -23,5 +24,4 @@ object DataTypes {
     var myMutableList = mutableListOf<String>()
     var myMutableMap = mutableMapOf<String,String>()
     var myMutableSet = mutableSetOf<String>()
-
 }
