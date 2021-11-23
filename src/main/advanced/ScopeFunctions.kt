@@ -1,5 +1,6 @@
 package advanced
 
+import classes.ManagerOperations
 import classes.ProfessionalStatus
 import classes.User
 
@@ -75,36 +76,73 @@ object ScopeFunctions {
 
         fun returnValue(){
             val user = User(1, "Harold", "openHarold@gmail.com", professionalStatus = ProfessionalStatus.OPEN_TO_PROPOSALS)
-            var firstAndLast = with(user) {
+            var notificationMessage = with(user) {
                 "Você, ${user.name}, concorda com os termos e " +
                 "permite a comunicações de marketin para o seu email pessoal ($email)."
             }
-            println(firstAndLast)
-            firstAndLast = with(User(1, "Harold", "openHarold@gmail.com", professionalStatus = ProfessionalStatus.OPEN_TO_PROPOSALS)){
+            println(notificationMessage)
+            notificationMessage = with(User(1, "Harold", "openHarold@gmail.com", professionalStatus = ProfessionalStatus.OPEN_TO_PROPOSALS)){
                 """
                     Você,${user.name} , concorda com os termos \n
                     permite a comunicações de marketin para o seu email pessoal ($email).
                 """.trimIndent()
             }
-            println(firstAndLast)
+            println(notificationMessage)
         }
     }
 
     object runScope {
-        fun getNullableLength(entry: String?) {
-            entry?.run {
-                println("É vazio? " + isEmpty())
-                println("É nulo ou contém apenas espaçamentos? " + isNullOrBlank())
-                println("Tamanho = $length")
-                length
+        //Run is useful when your lambda contains both the object initialization and the computation of the return value.
+        // Besides calling run on a receiver object, you can use it as a non-extension function. Lets you execute a block of several statements where an expression is required.
+        class MultiportService(var url: String, var port: Int) {
+            fun prepareRequest(): String = "Default request"
+            fun query(request: String): String = "Result for query '$request'"
+        }
+
+        fun httpRequest(entry: String?) {
+            val service = MultiportService("https://example.kotlinlang.org", 80)
+
+            val result = service.run {
+                port = 8080
+                query(prepareRequest() + " to port $port")
+            }
+        }
+
+        fun regexVerification(){
+            val hexNumberRegex = run {
+                val number = "0-9"
+                val hexDigits = "A-Fa-f"
+                val sign = "+-"
+
+                Regex("[$sign]?[$number$hexDigits]+")
+            }
+
+            for (match in hexNumberRegex.findAll("+123 -FFFF !%*& 88 XYZ")) {
+                println(match.value)
             }
         }
     }
 
     object applyScope {
+        //The common case for apply is the object configuration. Such calls can be read as “ apply the following assignments to the object.”
+        data class Person(var name: String, var age: Int = 0, var city: String = "")
 
+        fun createPerson(){
+            val adam = Person(name = "Adam", age = 10).apply {
+                age = 32
+                city = "London"
+            }
+            println(adam)
+        }
     }
-    object alsoScope {
 
+    object alsoScope {
+        //Use also for actions that need a reference rather to the object than to its properties and functions
+        fun createManagerAndAddUsers(){
+            val managerOperations = ManagerOperations()
+            User(1, "Harold", "employedHarold@gmail.com", professionalStatus = ProfessionalStatus.EMPLOYED)
+                .also { managerOperations.add(it) }
+                .also { println("Usuário ${it.name} adicionado") }
+        }
     }
 }
